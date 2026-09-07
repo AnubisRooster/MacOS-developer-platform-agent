@@ -1,7 +1,8 @@
-# Graph Report - MacOS-developer-platform-agent  (2026-09-06)
+# Graph Report - MacOS-developer-platform-agent  (2026-09-07)
 
 ## Corpus Check
-- Corpus is ~44,274 words - fits in a single context window. You may not need a graph.
+- 103 files · ~172,597 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
 - 948 nodes · 1715 edges · 74 communities (47 shown, 22 thin omitted)
