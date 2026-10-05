@@ -1,93 +1,65 @@
-# Graph Report - MacOS-developer-platform-agent  (2026-09-28)
+# Graph Report - MacOS-developer-platform-agent  (2026-10-05)
 
 ## Corpus Check
-- 103 files · ~189,898 words
+- 103 files · ~190,385 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: .example 2, (none) 1, .jsonl 1)
 
 ## Summary
-- 1053 nodes · 2009 edges · 86 communities (58 shown, 28 thin omitted)
-- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 151 edges (avg confidence: 0.91)
+- 1053 nodes · 2034 edges · 72 communities (38 shown, 34 thin omitted)
+- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 151 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- load_workflow()
+- ToolSchema
+- create_app()
 - EventBus
 - package.json
 - IronClawClient
+- load_workflow()
 - test_knowledge_tools.py
-- secrets.py
 - main.py
+- ConversationMemory
+- secrets.py
 - models.py
-- os
 - _cosine_similarity()
-- create_app()
-- test_platform_models.py
 - EmbeddingStore
-- init_db()
 - TestEnvironment
 - test_redis_event_bus.py
-- ToolSchema
+- init_db()
+- _register_tools()
 - TestMacOSPaths
+- test_platform_models.py
+- test_platform_e2e.py
 - app/page.tsx
-- github_integration.py
+- KnowledgeGraph
 - compilerOptions
-- get_session()
 - types.py
-- test_event_gateway.py
 - markets/page.tsx
+- test_event_gateway.py
+- gmail.py
 - api.ts
 - feeds/page.tsx
-- Orchestrator
-- ToolRegistry
-- gmail.py
 - jira_integration.py
-- KnowledgeGraph
 - test_knowledge_graph.py
 - confluence.py
 - jenkins.py
-- _log_event()
+- httpx
 - fetchApi()
-- pytest
-- conftest.py
-- slack.py
-- Any
-- GitHubIndexer
-- graphify_pipeline.py
-- asyncio
-- test_conversation_memory.py
-- ConversationMemory
-- test_backend_orchestrator.py
+- launcher.py
+- get_session()
 - SlackCommandGateway
 - RepositoryIntelligenceIndexer
 - react
-- index()
-- verify_webhook_signature()
-- _load_model_config()
-- full_app()
 - TestDashboardAPI
+- GitHubIndexer
 - logs/page.tsx
 - workflow-runs/page.tsx
-- sys
 - TestDashboardReadsWebhookData
 - TestNodeOperations
-- _register_tools()
-- JenkinsIndexer
 - next.config.js
 - start.sh
 - TestSlackWebhook
-- agent/__init__.py
-- database/__init__.py
-- events/__init__.py
-- backend/__init__.py
-- integrations/__init__.py
-- knowledge/__init__.py
-- security/__init__.py
-- tools/__init__.py
-- webhooks/__init__.py
-- _now_iso()
-- workflows/__init__.py
-- next-env.d.ts
 - build.sh
 - setup.sh
 - stop.sh
@@ -97,282 +69,202 @@
 1. `get_session()` - 68 edges
 2. `create_app()` - 65 edges
 3. `init_db()` - 45 edges
-4. `KnowledgeGraph` - 37 edges
+4. `KnowledgeGraph` - 38 edges
 5. `EventBus` - 30 edges
 6. `_register_tools()` - 28 edges
 7. `ToolSchema` - 25 edges
 8. `EmbeddingStore` - 24 edges
-9. `ToolRegistry` - 23 edges
-10. `fetchApi()` - 22 edges
+9. `run()` - 23 edges
+10. `ToolRegistry` - 23 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `memory()` --uses--> `ConversationMemory`  [INFERRED]
-  tests/conftest.py → backend/agent/memory.py
-- `memory()` --uses--> `ConversationMemory`  [INFERRED]
-  tests/unit/test_conversation_memory.py → backend/agent/memory.py
-- `orchestrator()` --uses--> `Orchestrator`  [INFERRED]
-  tests/unit/test_backend_orchestrator.py → backend/agent/orchestrator.py
 - `TestWebhookToEventStore` --uses--> `Event`  [INFERRED]
   tests/integration/test_platform_e2e.py → backend/database/models.py
 - `TestGitHubWebhook` --uses--> `Event`  [INFERRED]
   tests/unit/test_event_gateway.py → backend/database/models.py
+- `TestWorkflowTriggerPipeline` --uses--> `WorkflowRun`  [INFERRED]
+  tests/integration/test_platform_e2e.py → backend/database/models.py
+- `TestWorkflowEngine` --uses--> `WorkflowRun`  [INFERRED]
+  tests/unit/test_workflow_engine.py → backend/database/models.py
+- `TestOrchestratorPipeline` --uses--> `ToolOutput`  [INFERRED]
+  tests/integration/test_platform_e2e.py → backend/database/models.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (86 total, 28 thin omitted)
+## Communities (72 total, 34 thin omitted)
 
-### Community 0 - "load_workflow()"
-Cohesion: 0.07
-Nodes (25): load_all_workflows(), load_workflow(), _parse_actions(), _parse_trigger(), Any, Path, Workflow loader - load YAML workflow definitions from disk. Supports the new…, Single action in a workflow. (+17 more)
-
-### Community 1 - "EventBus"
-Cohesion: 0.08
-Nodes (22): EventBus, _consume(), Any, Dispatch event to all matching local handlers., Start consuming events from Redis stream in background., Async event bus with Redis stream backing and wildcard subscription support.…, Lazily connect to Redis., Publish an event to Redis stream and invoke local handlers. Event must have… (+14 more)
-
-### Community 2 - "package.json"
+### Community 0 - "ToolSchema"
 Cohesion: 0.05
-Nodes (37): dependencies, next, react, react-dom, recharts, devDependencies, autoprefixer, postcss (+29 more)
+Nodes (16): Orchestrator, ToolEntry, ToolRegistry, ToolSchema, api_tools(), TestOrchestratorPipeline, ironclaw_mock(), orchestrator() (+8 more)
 
-### Community 3 - "IronClawClient"
-Cohesion: 0.09
-Nodes (19): AsyncClient, IronClawClient, Any, Interpret user message. Returns: - content: str (assistant text) - tool_calls:…, Decompose a goal into an ordered list of steps with tool selections. Returns: -…, Given a task description and available tools, select the best tools to use.…, Summarize text. Uses IronClaw or OpenRouter., HTTP client for IronClaw runtime gateway. Env: IRONCLAW_URL,… (+11 more)
-
-### Community 4 - "test_knowledge_tools.py"
+### Community 1 - "create_app()"
 Cohesion: 0.06
-Nodes (20): KnowledgeTools, Any, Knowledge query tools that can be registered in the capability registry., Semantic search across all indexed engineering documents., Find a repository and its relationships (files, pipelines, engineers)., Trace a commit through PRs, Jira issues, and modified files., Find documentation related to a repository, file, or issue., Explain a system or component by combining graph data and document search.… (+12 more)
+Nodes (35): verify_webhook_signature(), create_app(), api_chat_delete(), api_chat_messages(), api_chat_sessions(), api_conversations(), api_document_detail(), api_documents() (+27 more)
 
-### Community 5 - "secrets.py"
+### Community 2 - "EventBus"
+Cohesion: 0.06
+Nodes (13): EventBus, _consume(), _get_nested(), _render_template(), repl(), _resolve_args(), WorkflowEngine, handler() (+5 more)
+
+### Community 3 - "package.json"
+Cohesion: 0.05
+Nodes (36): dependencies, next, react, react-dom, recharts, devDependencies, autoprefixer, postcss (+28 more)
+
+### Community 4 - "IronClawClient"
 Cohesion: 0.09
-Nodes (20): AppSecrets, get_secrets(), Backend secrets management, webhook verification, and redaction. Uses pydantic-…, Logging filter that redacts secrets from log records., Application secrets loaded from environment., Return cached AppSecrets instance., Redact known secret patterns from text., redact() (+12 more)
+Nodes (7): IronClawClient, client(), TestHealth, TestInterpret, TestPlan, TestSelectTools, TestSummarize
 
-### Community 6 - "main.py"
-Cohesion: 0.10
-Nodes (27): atexit, _build_ironclaw(), cli(), main(), Path, Developer AI Platform (macOS) - Backend CLI entry point. Commands: run - Full…, Register knowledge query tools in the capability registry., Launch IronClaw as a child process and wait until its health endpoint responds. (+19 more)
-
-### Community 7 - "models.py"
-Cohesion: 0.11
-Nodes (23): AgentConversation, AgentLog, CachedSummary, ChatMessage, ChatSession, SQLAlchemy ORM models for the Developer AI Platform. Includes: Event Store,…, Conversation messages for persistence and context., Structured agent logs for all events, workflows, and decisions. (+15 more)
-
-### Community 8 - "os"
-Cohesion: 0.14
-Nodes (17): asyncio, IronClawClient - HTTP client for IronClaw Rust reasoning engine. IronClaw runs…, ConversationMemory - Backend conversation persistence via SQLAlchemy. Stores…, Backend Orchestrator - Coordinates IronClaw/LLM and tools, persists…, SlackCommandGateway - Handles Slack app_mention events, routes to orchestrator.…, Event Bus with Redis backing and in-memory fallback. Supports wildcard topic…, Embedding Store - Semantic search using pgvector on PostgreSQL (JSON array…, Knowledge Graph - Engineering relationship graph stored in PostgreSQL. Node… (+9 more)
-
-### Community 9 - "_cosine_similarity()"
-Cohesion: 0.09
-Nodes (16): _chunk_text(), _cosine_similarity(), get_embeddings(), _get_embeddings_ollama(), _get_embeddings_openai(), Any, Generate and store embeddings for a document. If text is not provided, reads…, Semantic search across all indexed documents. Returns ranked results with… (+8 more)
-
-### Community 10 - "create_app()"
+### Community 5 - "load_workflow()"
 Cohesion: 0.08
-Nodes (17): create_app(), api_chat_delete(), api_chat_messages(), api_chat_sessions(), api_conversations(), api_document_detail(), api_documents(), api_event_detail() (+9 more)
+Nodes (12): load_all_workflows(), load_workflow(), _parse_actions(), _parse_trigger(), WorkflowAction, WorkflowDefinition, TestWorkflowLoader, TestLoadAllWorkflows (+4 more)
 
-### Community 11 - "test_platform_models.py"
-Cohesion: 0.15
-Nodes (16): AgentMemory, Base, KnowledgeEdge, KnowledgeNode, Persistent key-value memory for the agent., Node in the engineering knowledge graph., Edge (relationship) in the engineering knowledge graph., Workflow execution records. (+8 more)
+### Community 6 - "test_knowledge_tools.py"
+Cohesion: 0.06
+Nodes (9): KnowledgeTools, _sqlite_in_memory(), TestExplainSystem, TestFindRelatedDocs, TestFindRepo, TestKnowledgeToolDefinitions, TestSearch, TestTraceCommit (+1 more)
 
-### Community 12 - "EmbeddingStore"
-Cohesion: 0.16
-Nodes (13): Document, Embedding, Ingested document from any source (code, PR, Jira, Confluence, Jenkins)., Vector embedding for semantic search. Uses pgvector on PostgreSQL, JSON array…, EmbeddingStore, Manages document embeddings for semantic search., math, fixture (+5 more)
+### Community 7 - "main.py"
+Cohesion: 0.09
+Nodes (13): _build_ironclaw(), cli(), index(), main(), _register_knowledge_tools(), reindex_embeddings(), run(), _start_cloudflared() (+5 more)
 
-### Community 13 - "init_db()"
-Cohesion: 0.17
-Nodes (12): Event, _get_database_url(), get_engine(), init_db(), Standardized event from any webhook or internal source., sqlalchemy, deployment, fixture (+4 more)
+### Community 8 - "ConversationMemory"
+Cohesion: 0.08
+Nodes (11): ConversationMemory, env_secrets(), event_bus(), memory(), _reset_db_globals(), _reset_secrets_cache(), tmp_workflow_dir(), tool_registry() (+3 more)
 
-### Community 14 - "TestEnvironment"
+### Community 9 - "secrets.py"
 Cohesion: 0.10
-Nodes (6): importlib, platform, deployment, Deployment tests: verify environment, dependencies, and configuration., TestEnvironment, TestWindowsCompatibility
+Nodes (7): AppSecrets, get_secrets(), redact(), RedactingFilter, TestAppSecrets, TestRedact, TestRedactingFilter
+
+### Community 10 - "models.py"
+Cohesion: 0.10
+Nodes (10): AgentConversation, AgentLog, AgentMemory, CachedSummary, ChatMessage, ChatSession, ToolOutput, api_chat_new() (+2 more)
+
+### Community 11 - "_cosine_similarity()"
+Cohesion: 0.09
+Nodes (7): _chunk_text(), _cosine_similarity(), get_embeddings(), _get_embeddings_ollama(), _get_embeddings_openai(), TestChunking, TestCosineSimilarity
+
+### Community 13 - "EmbeddingStore"
+Cohesion: 0.15
+Nodes (6): Document, EmbeddingStore, TestKnowledgePipeline, _sqlite_in_memory(), TestEmbeddingStore, TestDocumentModel
 
 ### Community 15 - "test_redis_event_bus.py"
 Cohesion: 0.13
-Nodes (8): bus(), _no_redis(), asyncio, fixture, Unit tests for the Redis-backed Event Bus (in-memory fallback mode)., Test in-memory fallback when Redis is unavailable., TestEventBusFallback, handler()
+Nodes (4): bus(), _no_redis(), TestEventBusFallback, handler()
 
-### Community 16 - "ToolSchema"
-Cohesion: 0.16
-Nodes (11): Any, Tool registry for the backend orchestrator. Registers tools with JSON Schema…, JSON Schema for a tool's parameters., Convert to OpenAPI/JSON Schema format for tool calls., Registered tool with handler and schema., Register a tool by name., ToolEntry, ToolSchema (+3 more)
+### Community 16 - "init_db()"
+Cohesion: 0.18
+Nodes (7): Event, _get_database_url(), get_engine(), init_db(), TestDatabaseConnectivity, _use_sqlite(), TestEventModel
 
-### Community 17 - "TestMacOSPaths"
-Cohesion: 0.10
-Nodes (10): deployment, Verify backend/main.py uses start_new_session for subprocess management., Verify the database module can create data directories on macOS., Verify workflow directory glob works on macOS., Verify the packaged launcher falls back to ~/Library/Application Support., Scan all .py files for hardcoded Windows-specific paths., Ensure no CREATE_NEW_PROCESS_GROUP or other Windows-only subprocess flags., Verify key modules use pathlib.Path instead of os.path.join. (+2 more)
+### Community 17 - "_register_tools()"
+Cohesion: 0.19
+Nodes (9): _api(), comment_on_pr(), create_branch(), create_issue(), get_repo_activity(), _get_token(), search_repos(), summarize_pull_request() (+1 more)
 
-### Community 18 - "app/page.tsx"
+### Community 19 - "test_platform_models.py"
+Cohesion: 0.17
+Nodes (8): Base, Embedding, KnowledgeEdge, KnowledgeNode, _sqlite_in_memory(), TestAllTablesCreated, TestEmbeddingModel, TestKnowledgeGraphModels
+
+### Community 20 - "test_platform_e2e.py"
+Cohesion: 0.15
+Nodes (3): WorkflowRun, TestWorkflowRunModel, _sqlite_in_memory()
+
+### Community 21 - "app/page.tsx"
 Cohesion: 0.16
 Nodes (16): integrationNames, StatusPage(), StatusValue, toStatus(), ModelSelector(), PROVIDERS, Status, StatusCard() (+8 more)
 
-### Community 19 - "github_integration.py"
-Cohesion: 0.19
-Nodes (17): _api(), comment_on_pr(), create_branch(), create_issue(), get_repo_activity(), _get_token(), Any, GitHub integration - create_issue, summarize_pull_request, comment_on_pr,… (+9 more)
+### Community 22 - "KnowledgeGraph"
+Cohesion: 0.15
+Nodes (4): KnowledgeGraph, ConfluenceIndexer, JenkinsIndexer, JiraIndexer
 
-### Community 20 - "compilerOptions"
+### Community 23 - "compilerOptions"
 Cohesion: 0.11
 Nodes (17): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+9 more)
 
-### Community 21 - "get_session()"
-Cohesion: 0.18
-Nodes (8): get_session(), Create or update a document. Returns doc_id., _upsert_document(), Session, sessionmaker, Integration tests for the Developer AI Platform. Tests end-to-end flows: -…, TestKnowledgePipeline, TestWebhookToEventStore
-
-### Community 22 - "types.py"
+### Community 24 - "types.py"
 Cohesion: 0.17
-Nodes (10): AgentEvent, EventSource, Event types for the backend event bus., Event payload for the event bus., dataclasses, Enum, str, Unit tests for EventSource and AgentEvent. (+2 more)
+Nodes (4): AgentEvent, EventSource, TestAgentEvent, TestEventSource
 
-### Community 23 - "test_event_gateway.py"
-Cohesion: 0.12
-Nodes (10): fastapi_testclient, client(), fixture, Unit tests for the Event Gateway (webhook server)., _sqlite_in_memory(), TestGitHubWebhook, TestGmailWebhook, TestHealthEndpoint (+2 more)
-
-### Community 24 - "markets/page.tsx"
+### Community 25 - "markets/page.tsx"
 Cohesion: 0.21
 Nodes (14): ASSET_ORDER, ChartTooltip(), formatLargeNumber(), formatPrice(), MarketsPage(), PriceCard(), PriceChart(), PriceChartProps (+6 more)
 
-### Community 25 - "api.ts"
+### Community 26 - "test_event_gateway.py"
+Cohesion: 0.13
+Nodes (7): client(), _sqlite_in_memory(), TestGitHubWebhook, TestGmailWebhook, TestHealthEndpoint, TestJenkinsWebhook, TestJiraWebhook
+
+### Community 27 - "gmail.py"
+Cohesion: 0.20
+Nodes (7): extract_action_items(), _get_credentials_path(), _get_service(), _get_token_path(), read_emails(), send_email(), summarize_thread()
+
+### Community 29 - "api.ts"
 Cohesion: 0.22
 Nodes (12): ConversationsPage(), MessageBubble(), EventsPage(), payloadPreview(), Conversation, Event, fetchConversations(), fetchEvents() (+4 more)
 
-### Community 26 - "feeds/page.tsx"
+### Community 30 - "feeds/page.tsx"
 Cohesion: 0.21
 Nodes (14): EmailRow(), FeedsPage(), LinkedInPost(), NotConfigured(), Tab, XPost(), EmailMessage, FeedPost (+6 more)
 
-### Community 27 - "Orchestrator"
-Cohesion: 0.22
-Nodes (8): Orchestrator, Any, Execute a registered tool and return its result., Backend orchestrator with IronClaw client and tool registry., Build message list from history + new user message., Process user message: send to IronClaw, parse tool calls, execute, persist.…, Store tool output in database., TestOrchestratorPipeline
-
-### Community 28 - "ToolRegistry"
-Cohesion: 0.19
-Nodes (6): Registry of tools available to the orchestrator., Get handler for a tool by name., Get all tool schemas for LLM tool declarations., List all registered tool names., ToolRegistry, TestBackendToolRegistry
-
-### Community 29 - "gmail.py"
-Cohesion: 0.24
-Nodes (12): _get_credentials_path(), _get_service(), _get_token_path(), Any, Path, Gmail integration - read_emails, summarize_thread, send_email,…, Get Gmail API service (lazy import)., Read emails matching query. (+4 more)
-
-### Community 30 - "jira_integration.py"
+### Community 31 - "jira_integration.py"
 Cohesion: 0.28
-Nodes (12): _api(), create_ticket(), _get_config(), get_ticket_details(), link_github_issue(), Any, Jira integration - create_ticket, update_ticket, link_github_issue,…, Create a Jira ticket. (+4 more)
-
-### Community 31 - "KnowledgeGraph"
-Cohesion: 0.17
-Nodes (7): KnowledgeGraph, Add an edge. Returns True if created, False if already exists., Get graph statistics., Interface over the PostgreSQL-backed knowledge graph., Create or update a node. Returns node_id., ConfluenceIndexer, Index Confluence documentation pages.
+Nodes (6): _api(), create_ticket(), _get_config(), get_ticket_details(), link_github_issue(), update_ticket()
 
 ### Community 32 - "test_knowledge_graph.py"
 Cohesion: 0.17
-Nodes (6): graph(), fixture, Unit tests for the Knowledge Graph., _sqlite_in_memory(), TestEdgeOperations, TestGraphQueries
+Nodes (4): graph(), _sqlite_in_memory(), TestEdgeOperations, TestGraphQueries
 
 ### Community 33 - "confluence.py"
 Cohesion: 0.26
-Nodes (11): _api(), create_page(), _get_config(), Any, Confluence integration - search_docs, summarize_page, create_page., Call Confluence REST API., Search Confluence using CQL., Fetch a page and return a text summary (title + body excerpt). (+3 more)
+Nodes (5): _api(), create_page(), _get_config(), search_docs(), summarize_page()
 
 ### Community 34 - "jenkins.py"
 Cohesion: 0.26
-Nodes (11): _api(), fetch_build_logs(), get_build_status(), _get_config(), Any, Jenkins integration - trigger_build, get_build_status, fetch_build_logs., Call Jenkins API (crumb may be required)., Trigger a Jenkins build. Returns build queue info. (+3 more)
+Nodes (5): _api(), fetch_build_logs(), get_build_status(), _get_config(), trigger_build()
 
-### Community 35 - "_log_event()"
-Cohesion: 0.32
-Nodes (12): github_webhook(), gmail_webhook(), jenkins_webhook(), jira_webhook(), slack_webhook(), _log_event(), _make_event(), _persist_event() (+4 more)
+### Community 35 - "httpx"
+Cohesion: 0.27
+Nodes (5): _api(), _get_token(), read_channel_history(), respond_to_command(), send_message()
 
 ### Community 36 - "fetchApi()"
 Cohesion: 0.32
 Nodes (11): ChatPage(), MessageBubble(), ChatMessageItem, ChatSessionSummary, createChatSession(), deleteChatSession(), fetchApi(), fetchChatMessages() (+3 more)
 
-### Community 37 - "pytest"
-Cohesion: 0.17
-Nodes (6): pytest, Deployment tests: verify all path handling is macOS-compatible., deployment, fixture, Deployment tests: verify services can start and respond to health checks., TestServiceHealth
-
-### Community 38 - "conftest.py"
-Cohesion: 0.26
-Nodes (11): env_secrets(), event_bus(), memory(), fixture, Shared fixtures for the test suite., Ensure database globals are reset between tests., Create a temp directory with sample workflow YAML files., _reset_db_globals() (+3 more)
-
-### Community 39 - "slack.py"
-Cohesion: 0.27
-Nodes (10): _api(), _get_token(), Any, Slack integration - send_message, read_channel_history, respond_to_command., Send a message to a channel (optionally in a thread)., Read recent messages from a channel., Respond to a Slack slash command using the response_url., read_channel_history() (+2 more)
-
-### Community 40 - "Any"
-Cohesion: 0.31
-Nodes (5): Any, Get neighboring nodes. direction: out, in, both., Trace a commit through the graph: commit → PR → Jira issues → repo., Find documentation nodes related to any entity., Find a repository node by name or external ID.
-
-### Community 41 - "GitHubIndexer"
+### Community 37 - "launcher.py"
 Cohesion: 0.18
-Nodes (6): _github_headers(), GitHubIndexer, JiraIndexer, Index Jira issues into documents and knowledge graph., Index GitHub repositories, files, commits, and pull requests., Index a repository: metadata, files (tree), recent commits, open PRs.
+Nodes (3): main(), _setup_packaged_env(), TestServiceHealth
 
-### Community 42 - "graphify_pipeline.py"
-Cohesion: 0.18
-Nodes (9): graphify_analyze, graphify_build, graphify_cluster, graphify_detect, graphify_export, graphify_extract, graphify_llm, graphify_report (+1 more)
-
-### Community 43 - "asyncio"
-Cohesion: 0.27
-Nodes (3): asyncio, TestOrchestratorExecuteTool, TestOrchestratorHandleMessage
-
-### Community 44 - "test_conversation_memory.py"
-Cohesion: 0.20
-Nodes (5): memory(), fixture, Unit tests for backend ConversationMemory., _sqlite_in_memory(), TestConversationMemory
-
-### Community 45 - "ConversationMemory"
-Cohesion: 0.22
-Nodes (6): ConversationMemory, Any, Persists and retrieves conversation messages from the database., Persist a conversation message., Retrieve recent messages for a conversation., Get messages in format suitable for LLM chat API.
-
-### Community 46 - "test_backend_orchestrator.py"
-Cohesion: 0.27
-Nodes (8): api_tools(), ironclaw_mock(), orchestrator(), fixture, Unit tests for the backend Orchestrator (IronClaw + tool registry)., registry(), _sqlite_in_memory(), TestOrchestratorMemory
-
-### Community 47 - "SlackCommandGateway"
+### Community 38 - "get_session()"
 Cohesion: 0.25
-Nodes (5): Any, Handles Slack app_mention events and routes to orchestrator., Register app_mention handler on the Slack Bolt app. Expects app to have…, Process a message and return the response. Used when the gateway is called…, SlackCommandGateway
+Nodes (3): get_session(), _upsert_document(), TestWebhookToEventStore
 
-### Community 48 - "RepositoryIntelligenceIndexer"
-Cohesion: 0.33
-Nodes (4): Any, Orchestrates all indexers for a full reindex., Run all indexers. github_repos format: ['owner/repo', ...], RepositoryIntelligenceIndexer
-
-### Community 49 - "react"
+### Community 42 - "react"
 Cohesion: 0.28
 Nodes (7): ToolsPage(), WorkflowsPage(), fetchTools(), fetchWorkflows(), Tool, Workflow, react
 
-### Community 50 - "index()"
-Cohesion: 0.32
-Nodes (8): index(), Webhook server only: receives events, no orchestrator., Run repository intelligence indexers., Regenerate embeddings for all documents., reindex_embeddings(), webhook_server(), command, option
-
-### Community 51 - "verify_webhook_signature()"
-Cohesion: 0.39
-Nodes (3): Verify webhook signature (HMAC-SHA256). - GitHub: X-Hub-Signature-256…, verify_webhook_signature(), TestVerifyWebhookSignature
-
-### Community 52 - "_load_model_config()"
-Cohesion: 0.29
-Nodes (8): api_model_config_get(), api_model_config_post(), _check_ironclaw(), _get_model_config_path(), _llm_chat(), _load_model_config(), _mask_key(), _save_model_config()
-
-### Community 53 - "full_app()"
-Cohesion: 0.29
-Nodes (6): client(), full_app(), fixture, Create app with event bus and workflow engine wired up., Minimal app, no orchestrator., _sqlite_in_memory()
-
-### Community 55 - "logs/page.tsx"
+### Community 45 - "logs/page.tsx"
 Cohesion: 0.47
 Nodes (5): LevelFilter, logLineColor(), LogsPage(), fetchLogs(), LogEntry
 
-### Community 56 - "workflow-runs/page.tsx"
+### Community 46 - "workflow-runs/page.tsx"
 Cohesion: 0.53
 Nodes (5): formatDuration(), statusBadge(), WorkflowRunsPage(), fetchWorkflowRuns(), WorkflowRun
 
-### Community 57 - "sys"
-Cohesion: 0.40
-Nodes (5): main(), Claw Agent launcher - entry point for packaged executable. Sets up data paths…, Configure environment for packaged or portable run., _setup_packaged_env(), sys
-
-### Community 60 - "_register_tools()"
-Cohesion: 0.50
-Nodes (4): extract_action_items(), Extract action items from email/thread text (simple heuristic)., Register all integration tools and knowledge tools., _register_tools()
-
 ## Knowledge Gaps
 - **62 isolated node(s):** `nextConfig`, `name`, `version`, `private`, `dev` (+57 more)
-  These have ≤1 connection - possible missing edges. (Counts symbols only; 421 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **28 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges. (Counts symbols only; 416 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `get_session()` connect `get_session()` to `load_workflow()`, `EventBus`, `_log_event()`, `models.py`, `os`, `create_app()`, `asyncio`, `EmbeddingStore`, `init_db()`, `ConversationMemory`, `test_backend_orchestrator.py`, `test_platform_models.py`, `test_event_gateway.py`, `Orchestrator`, `KnowledgeGraph`?**
-  _High betweenness centrality (0.059) - this node is a cross-community bridge._
-- **Why does `create_app()` connect `create_app()` to `_log_event()`, `secrets.py`, `main.py`, `models.py`, `pytest`, `_now_iso()`, `test_platform_models.py`, `EmbeddingStore`, `init_db()`, `test_backend_orchestrator.py`, `index()`, `verify_webhook_signature()`, `_load_model_config()`, `get_session()`, `full_app()`, `test_event_gateway.py`?**
-  _High betweenness centrality (0.053) - this node is a cross-community bridge._
-- **Why does `init_db()` connect `init_db()` to `test_knowledge_graph.py`, `EventBus`, `load_workflow()`, `test_knowledge_tools.py`, `main.py`, `models.py`, `test_platform_models.py`, `test_conversation_memory.py`, `EmbeddingStore`, `test_backend_orchestrator.py`, `index()`, `full_app()`, `get_session()`, `test_event_gateway.py`, `Orchestrator`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **Why does `get_session()` connect `get_session()` to `ToolSchema`, `create_app()`, `EventBus`, `ConversationMemory`, `models.py`, `os`, `EmbeddingStore`, `init_db()`, `test_platform_models.py`, `test_platform_e2e.py`, `KnowledgeGraph`, `test_event_gateway.py`?**
+  _High betweenness centrality (0.060) - this node is a cross-community bridge._
 - **Are the 8 inferred relationships involving `create_app()` (e.g. with `AgentConversation` and `AgentLog`) actually correct?**
   _`create_app()` has 8 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 12 inferred relationships involving `KnowledgeGraph` (e.g. with `KnowledgeEdge` and `KnowledgeNode`) actually correct?**
-  _`KnowledgeGraph` has 12 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 8 inferred relationships involving `EventBus` (e.g. with `run()` and `WorkflowEngine`) actually correct?**
-  _`EventBus` has 8 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `nextConfig`, `name`, `version` to the rest of the system?**
   _62 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `ToolSchema` be split into smaller, more focused modules?**
+  _Cohesion score 0.050724637681159424 - nodes in this community are weakly interconnected._
+- **Why does `create_app()` connect `create_app()` to `ToolSchema`, `EventBus`, `launcher.py`, `get_session()`, `main.py`, `secrets.py`, `models.py`, `EmbeddingStore`, `init_db()`, `test_platform_models.py`, `test_platform_e2e.py`, `test_event_gateway.py`?**
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
+- **Are the 12 inferred relationships involving `KnowledgeGraph` (e.g. with `KnowledgeEdge` and `KnowledgeNode`) actually correct?**
+  _`KnowledgeGraph` has 12 INFERRED edges - model-reasoned connections that need verification._
+- **Should `create_app()` be split into smaller, more focused modules?**
+  _Cohesion score 0.05584415584415584 - nodes in this community are weakly interconnected._
