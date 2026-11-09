@@ -1,7 +1,7 @@
-# Graph Report - MacOS-developer-platform-agent  (2026-11-02)
+# Graph Report - MacOS-developer-platform-agent  (2026-11-09)
 
 ## Corpus Check
-- 103 files · ~133,226 words
+- 103 files · ~133,381 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 7 file(s) not represented in the graph (top: .example 2, (none) 1, .jsonl 1)
 
